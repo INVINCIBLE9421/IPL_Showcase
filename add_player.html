@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="add_player.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Add Player</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left-section">
+                <!-- IPL Logo -->
+                <img src="assets/IPL_Logo_Vector.png" alt="IPL Logo">
+            </div>
+            <div class="middle-section">
+                <!-- Add Player and Add Team buttons -->
+                <button><a href="index.html">
+                    <i class="fas fa-home"></i>Home</button>
+                  </a></button>
+                <button>Add Player</button>
+                <button><a href="add_team.html">Add Team</a></button>
+            </div>
+            <div class="right-section">
+                <!-- Search bar with icon -->
+                <div class="search-container">
+                    <i style="margin-right: -3px;" class="fas fa-search"></i>
+                    <input type="text" id="teamSearchInput" placeholder="Search by team code">
+                    <button style="height: 30px;" onclick="searchTeam()">Search</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="player-details">
+            <h1 class="player-details-heading">Add Player</h1>
+            
+            <div class="player-details-info">
+                <form id="addPlayerForm" class="player-form">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+
+                    <label for="photo">Photo:</label>
+                    <input type="file" id="photo" name="photo">
+
+                    <label for="team">Team:</label>
+                    <input type="text" id="team" name="team" required>
+
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" name="price" required>
+
+                    <label for="playingStatus">Playing Status:</label>
+                    <select id="playingStatus" name="playingStatus" required>
+                        <option value="Playing">Playing</option>
+                        <option value="On-bench">On-bench</option>
+                    </select>
+
+                    <label for="role">Role:</label>
+                    <select id="role" name="role" required>
+                        <option value="Batsman">Batsman</option>
+                        <option value="Bowler">Bowler</option>
+                        <option value="All-rounder">All-rounder</option>
+                    </select>
+
+                    <button type="submit">Add Player</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="add_player.js"></script>
+    <script src="index.js"></script>
+    <script src="data.js"></script>
+</body>
+</html>

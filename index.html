@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>IPL Teams</title>
+</head>
+<body>
+    <header>
+        <nav>
+          <div class="left-section">
+            <!-- IPL Logo -->
+            <img src="assets/IPL_Logo_Vector.png" alt="IPL Logo">
+          </div>
+          <div class="middle-section">
+            <!-- Add Player and Add Team buttons -->
+            <button id="home">
+              <a href="index.html">
+                <i class="fas fa-home"></i>Home</button>
+              </a>
+                <button><a href="add_player.html">Add Player</a></button>
+            <button><a href="add_team.html">Add Team</a></button>
+          </div>
+          <div class="right-section">
+            <!-- Search bar with icon -->
+  <div class="search-container">
+    <i style="margin-right: -3px;" class="fas fa-search"></i>
+            <input type="text" id="teamSearchInput" placeholder="Search by team code">
+            <button style="height: 30px;" onclick="searchTeam()">Search</button>
+
+          </div>
+        </nav>
+      </header>
+    
+      <main>
+        <section class="team-section">
+          <h1 class="teams-heading">IPL Teams</h1>
+          <div class="team-cards">
+          </div>
+      </section>
+      </main>
+      <script src="index.js"></script>
+      <script src="data.js"></script>
+      <script src="add_team.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Listen for the custom event indicating a new team addition
+            document.addEventListener('newTeamAdded', function(event) {
+                const teamData = event.detail;
+                updateTeamCard(teamData);
+            });
+    
+            function updateTeamCard(data) {
+                const teamCardsContainer = document.querySelector('.team-cards');
+    
+                const teamCard = document.createElement('div');
+                teamCard.classList.add('team-card');
+    
+                // Create elements and populate team card using data
+    
+                teamCardsContainer.appendChild(teamCard); // Append the new team card to the team cards container
+            }
+        });
+    </script>
+</body>
+</html>
