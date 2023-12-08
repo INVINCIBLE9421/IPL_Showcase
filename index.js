@@ -1,25 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const slides = document.querySelectorAll('.slides img');
-  let currentSlide = 0;
 
-  function showSlide(n) {
-    slides.forEach((slide) => {
-      slide.style.display = 'none';
-    });
-    slides[n].style.display = 'block';
-  }
-
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  // Initial call to display the first slide
-  showSlide(currentSlide);
-
-  // Automatically change slides every 2 seconds
-  setInterval(nextSlide, 2000);
-});
 function searchTeam() {
   const userInput = document.getElementById('teamSearchInput').value.toUpperCase(); // Get the entered input
 

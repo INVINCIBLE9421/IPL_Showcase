@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const addPlayerForm = document.getElementById('addPlayerForm');
-    const playerCardsContainer = document.querySelector('.player-cards');
+    const playerCardsContainer = document.querySelector('.team-details-players-grid');
 
     addPlayerForm.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -9,16 +9,40 @@ document.addEventListener('DOMContentLoaded', function() {
         const playerData = {};
 
         for (const [key, value] of formData.entries()) {
-            playerData[key] = value;
+            if (key === 'isPlaying') {
+                // Convert value to boolean based on 'isPlaying' selection
+                playerData['isPlaying'] = value === 'Playing';
+            } else {
+                playerData[key] = value;
+            }
         }
+        let existingPlayers = JSON.parse(localStorage.getItem('playersData')) || [];
 
-        // Store playerData in local storage
-        localStorage.setItem('newPlayerData', JSON.stringify(playerData));
 
-        // Call function to update player card with new data
+        const newPlayerId = existingPlayers.length + 6; // Incrementing the ID based on existing data
+        playerData['id'] = newPlayerId;
+
+        // Get team code and assign it to the 'from' property
+        const teamCode = formData.get('from');
+        playerData['from'] = teamCode;
+
+        // Push the new player data into the existing players array
+        existingPlayers.push(playerData);
+
+        // Update local storage with the modified data
+        localStorage.setItem('playersData', JSON.stringify(existingPlayers));
+
+        // Call function to update player cards with new data
         updatePlayerCard(playerData);
+        window.location.href = 'team_detail.html?teamCode=' + teamCode;
 
-        window.location.href = 'index.html'; // Replace with your homepage URL
+        // // Store playerData in local storage
+        // localStorage.setItem('newPlayerData', JSON.stringify(playerData));
+
+        // // Call function to update player card with new data
+        // updatePlayerCard(playerData);
+
+        // window.location.href = 'index.html'; // Replace with your homepage URL
     });
 
     function updatePlayerCard(data) {

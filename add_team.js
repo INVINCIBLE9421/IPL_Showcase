@@ -53,13 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
         teamInfo.appendChild(teamName);
         teamInfo.appendChild(additionalInfo);
 
-        teamCard.appendChild(teamInfo);
         const teamLogo = document.createElement('img');
         teamLogo.classList.add('team-logo');
         teamLogo.src = data.teamLogo ? URL.createObjectURL(data.teamLogo) : 'assets/blank-profile-picture.png';
         teamLogo.alt = 'Team Logo';
         teamCard.appendChild(teamLogo);
-
+        teamCard.appendChild(teamInfo);
+        
         // Add the new team card to the team cards container
         teamCardsContainer.appendChild(teamCard);
     }

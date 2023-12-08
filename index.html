@@ -44,25 +44,5 @@
       <script src="index.js"></script>
       <script src="data.js"></script>
       <script src="add_team.js"></script>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Listen for the custom event indicating a new team addition
-            document.addEventListener('newTeamAdded', function(event) {
-                const teamData = event.detail;
-                updateTeamCard(teamData);
-            });
-    
-            function updateTeamCard(data) {
-                const teamCardsContainer = document.querySelector('.team-cards');
-    
-                const teamCard = document.createElement('div');
-                teamCard.classList.add('team-card');
-    
-                // Create elements and populate team card using data
-    
-                teamCardsContainer.appendChild(teamCard); // Append the new team card to the team cards container
-            }
-        });
-    </script>
 </body>
 </html>

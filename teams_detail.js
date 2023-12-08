@@ -11,9 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Set other team details dynamically here using the teamDetails object
         // For instance:
         document.querySelector('.team-stats span:nth-child(2)').textContent = teamDetails.playerCount;
-        document.querySelector('.stat:nth-child(3) span:nth-child(2)').textContent = teamDetails.topBatsman;
-        document.querySelector('.stat:nth-child(4) span:nth-child(2)').textContent = teamDetails.topBowler;
-        document.querySelector('.stat:nth-child(5) span:nth-child(2)').textContent = teamDetails.wonCount;
+        document.querySelector('.stat:nth-child(2) span:nth-child(2)').textContent = teamDetails.topBatsman;
+        document.querySelector('.stat:nth-child(3) span:nth-child(2)').textContent = teamDetails.topBowler;
+        document.querySelector('.stat:nth-child(4) span:nth-child(2)').textContent = teamDetails.wonCount;
+
+        let newPlayers=JSON.parse(localStorage.getItem('playersData'))||[];
+
+        playersData=playersData.concat(newPlayers);
     } else {
         // Handle team not found
         console.log('Team not found');
